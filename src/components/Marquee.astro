@@ -1,0 +1,67 @@
+---
+const items = [
+  'Strategy',
+  'Systems architecture',
+  'Product development',
+  'Digital transformation',
+  'Long-term infrastructure',
+  'Organisational resilience',
+];
+---
+
+<div class="marquee-track">
+  <div class="marquee-inner" aria-hidden="true">
+    {[...items, ...items].map((item, i) => (
+      <>
+        <span class={`marquee-item ${i % 3 === 0 ? 'on' : ''}`}>{item}</span>
+        <span class="marquee-sep"></span>
+      </>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-track {
+    padding: 16px 0;
+    border-top: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+    overflow: hidden;
+    background: var(--panel);
+  }
+
+  .marquee-inner {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    width: max-content;
+    animation: scroll 26s linear infinite;
+  }
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--crypt);
+    white-space: nowrap;
+  }
+
+  .marquee-item.on { color: var(--revive); }
+
+  .marquee-sep {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--arcade);
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-inner { animation: none; }
+  }
+</style>

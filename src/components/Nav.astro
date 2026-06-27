@@ -1,0 +1,84 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: 'mailto:mitch@undeadops.dev' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <Logo size={24} />
+      <span class="wordmark">undead<em>Ops</em></span>
+    </a>
+    <div class="nav-links">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class={`nav-link ${currentPath === link.href ? 'active' : ''}`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    border-bottom: 2px solid var(--line);
+    background: var(--panel);
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--font-pixel);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+  }
+
+  .wordmark em {
+    color: var(--revive);
+    font-style: normal;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: var(--ash);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--revive);
+    border-color: var(--revive);
+  }
+</style>

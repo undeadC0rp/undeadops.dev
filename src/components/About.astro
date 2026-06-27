@@ -1,0 +1,204 @@
+---
+import Logo from './Logo.astro';
+
+const disciplines = [
+  {
+    title: 'Cloud architecture & infrastructure',
+    body: 'Early adopter, still here. From early cloud through to modern multi-region, high-availability systems at scale.',
+    highlight: 'high-availability',
+  },
+  {
+    title: 'DevOps & site reliability',
+    body: 'Building the pipelines, processes, and culture that keep systems running — not just deployed.',
+    highlight: 'running',
+  },
+  {
+    title: 'Security & network engineering',
+    body: 'Hands-on from the physical layer up — networks, perimeters, and the unglamorous work that keeps things safe.',
+    highlight: 'unglamorous',
+  },
+  {
+    title: 'Software development',
+    body: "I can read, write, and reason about code — which means I can talk to your engineers as a peer, not a proxy.",
+    highlight: 'peer',
+  },
+  {
+    title: 'Datacenter build & migration',
+    body: 'Heavily involved in building on-prem datacenters and relocating them — I know what it takes to keep the lights on during the transition.',
+    highlight: 'during',
+  },
+  {
+    title: 'High-traffic web platforms',
+    body: 'Built and scaled platforms to tens of millions of unique monthly visitors. Scale problems are familiar territory.',
+    highlight: 'tens of millions',
+  },
+];
+
+const stats = [
+  { value: '6', label: 'Disciplines' },
+  { value: '10M+', label: 'Monthly visitors served' },
+  { value: '∞', label: 'Planned longevity' },
+];
+---
+
+<section id="about" class="about">
+  <div class="container about-grid">
+
+    <div class="about-left">
+      <p class="section-label">About</p>
+      <h2>I've worked every<br />layer of the <em>stack.</em></h2>
+      <p class="body">
+        undeadOps is a solo consultancy. That means when you engage with us,
+        you get someone who has actually done the work — not a team of analysts
+        who've read about it.
+      </p>
+      <p class="body">
+        Over the years I've worked across security, network engineering, DevOps,
+        SRE, and software development. I've been heavily involved in building
+        on-prem datacenters, and moving them to new locations. In the cloud,
+        I was an early adopter — <em>still here</em> — and have spent years on
+        the leading edge of where it's heading next.
+      </p>
+      <p class="body">
+        I've built and run platforms serving tens of millions of unique visitors
+        a month. I know what breaks under load, what breaks under neglect, and
+        what doesn't break at all — because it was built right from the start.
+      </p>
+      <div class="sig">
+        <div class="sig-avatar">
+          <Logo size={24} color="#5EE87A" />
+        </div>
+        <div>
+          <p class="sig-name">Founder, undeadOps</p>
+          <p class="sig-title">Permanently operational</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      {disciplines.map((d, i) => (
+        <div class="discipline">
+          <span class="d-num">0{i + 1}</span>
+          <div>
+            <p class="d-title">{d.title}</p>
+            <p class="d-body" set:html={d.body.replace(d.highlight, `<em>${d.highlight}</em>`)} />
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <div class="divider" style="margin: 0 48px;"></div>
+
+  <div class="container stats-row">
+    {stats.map((s, i) => (
+      <>
+        <div class="stat">
+          <p class="stat-n"><em>{s.value}</em></p>
+          <p class="stat-l">{s.label}</p>
+        </div>
+        {i < stats.length - 1 && <span class="stat-div" aria-hidden="true"></span>}
+      </>
+    ))}
+  </div>
+</section>
+
+<style>
+  .about { padding: 0 0 0; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 44px; }
+  }
+
+  h2 {
+    font-family: var(--font-pixel);
+    font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.6;
+    color: var(--bone);
+    margin-bottom: 26px;
+    text-shadow: 2px 2px 0 #000;
+  }
+
+  h2 em { color: var(--revive); font-style: normal; }
+
+  .body {
+    font-size: 13.5px;
+    color: var(--ash);
+    line-height: 1.95;
+    margin-bottom: 14px;
+  }
+
+  .body em { color: var(--bone); font-style: normal; }
+
+  .sig {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 38px;
+    padding-top: 22px;
+    border-top: 2px solid var(--line);
+  }
+
+  .sig-avatar {
+    width: 42px;
+    height: 42px;
+    background: var(--moss);
+    border: 2px solid var(--line-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 3px 3px 0 #000;
+  }
+
+  .sig-name { font-family: var(--font-pixel); font-size: 9px; color: var(--bone); }
+  .sig-title { font-size: 12px; color: var(--ash); margin-top: 6px; letter-spacing: 0.02em; }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    padding-top: 46px;
+  }
+
+  .discipline {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    padding: 18px 14px;
+    border: 2px solid var(--line);
+    margin-bottom: -2px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .discipline:hover { background: var(--panel); border-color: var(--line-2); }
+
+  .d-num { font-family: var(--font-pixel); font-size: 9px; color: var(--arcade); padding-top: 3px; }
+  .d-title { font-size: 13.5px; color: var(--bone); margin-bottom: 6px; font-weight: 600; }
+  .d-body { font-size: 12.5px; color: var(--ash); line-height: 1.7; }
+  .d-body :global(em) { color: var(--revive); font-style: normal; }
+
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 36px;
+    padding-bottom: 60px;
+    flex-wrap: wrap;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 10px; }
+  .stat-n { font-family: var(--font-pixel); font-size: 26px; color: var(--bone); text-shadow: 3px 3px 0 #000; }
+  .stat-n em { color: var(--revive); font-style: normal; text-shadow: 0 0 12px rgba(94, 232, 122, 0.4), 3px 3px 0 #000; }
+  .stat-l { font-family: var(--font-pixel); font-size: 8px; color: var(--ash); letter-spacing: 0.04em; text-transform: uppercase; }
+  .stat-div { display: block; width: 2px; height: 44px; background: var(--line-2); margin: 0 22px; }
+</style>

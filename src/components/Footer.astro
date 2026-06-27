@@ -1,0 +1,59 @@
+---
+import Logo from './Logo.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="divider" style="margin: 0 48px;"></div>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <Logo size={20} color="#2A2A2A" />
+      <span class="wordmark">undead<em>Ops</em></span>
+    </div>
+    <p class="footer-center">We don't stop.</p>
+    <p class="footer-right">© {year} undeadOps. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: 0.02em;
+    color: var(--crypt);
+  }
+
+  .wordmark em { color: #3A5A3A; font-style: normal; }
+
+  .footer-center {
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    color: var(--arcade);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-right {
+    font-size: 11px;
+    color: var(--crypt);
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Technology consultancy</p>
+    <h1>
+      Some things<br />
+      aren't meant<br />
+      to <em>end.</em>
+    </h1>
+    <p class="sub">
+      Working with organisations building for the <em>long term</em> — systems,
+      strategies, and products that persist long after the moment has passed.
+    </p>
+    <div class="cta">
+      <a href="mailto:mitch@undeadops.dev" class="btn">
+        Get in touch
+        <span class="arrow" aria-hidden="true"></span>
+      </a>
+      <a href="#about" class="btn-ghost">Our work</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 88px 0 72px;
+    max-width: 720px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-pixel);
+    font-size: 8px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--arcade);
+    margin-bottom: 26px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 8px;
+    background: var(--arcade);
+    box-shadow: 4px 0 0 var(--arcade);
+    flex-shrink: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
+  }
+
+  h1 {
+    font-family: var(--font-pixel);
+    font-size: clamp(20px, 3.4vw, 34px);
+    line-height: 1.5;
+    color: var(--bone);
+    letter-spacing: 0.01em;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 0 #000;
+  }
+
+  h1 em {
+    color: var(--revive);
+    font-style: normal;
+    text-shadow: 0 0 14px rgba(94, 232, 122, 0.45), 3px 3px 0 #000;
+  }
+
+  .sub {
+    font-size: 13.5px;
+    color: var(--ash);
+    line-height: 1.9;
+    max-width: 430px;
+    margin-bottom: 44px;
+    border-left: 2px solid var(--line-2);
+    padding-left: 18px;
+  }
+
+  .sub em { color: var(--bone); font-style: normal; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    color: var(--void);
+    background: var(--revive);
+    border: 2px solid var(--revive);
+    box-shadow: 4px 4px 0 #063a17;
+    transition: transform 0.08s, box-shadow 0.08s, background 0.15s;
+  }
+
+  .btn:hover { background: #76ff93; }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #063a17; }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 7px solid var(--void);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    color: var(--ash);
+    background: transparent;
+    border: 2px solid var(--line-2);
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 0.08s, box-shadow 0.08s, color 0.15s, border-color 0.15s;
+  }
+
+  .btn-ghost:hover { color: var(--arcade); border-color: var(--arcade); box-shadow: 4px 4px 0 #3a0820; }
+  .btn-ghost:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #000; }
+</style>

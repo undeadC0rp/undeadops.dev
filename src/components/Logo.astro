@@ -1,0 +1,59 @@
+---
+interface Props {
+  size?: number;
+  color?: string;
+  accent?: string; // kept for API compatibility (unused — features are negative space)
+}
+
+const { size = 24, color = '#F2F0EB' } = Astro.props;
+
+// bone = '#', everything else is negative space (eyes / nose / teeth show the bg through)
+const SKULL = [
+  '.....#####.....',
+  '...#########...',
+  '..###########..',
+  '.#############.',
+  '###############',
+  '###############',
+  '##...#####...##',
+  '#.....###.....#',
+  '#.....###.....#',
+  '#.....###.....#',
+  '#.....###.....#',
+  '##...#####...##',
+  '###############',
+  '...###...###...',
+  '...####.####...',
+  '...#########...',
+  '...#.#.#.#.#...',
+  '...##.#.#.##...',
+  '...#########...',
+  '....#######....',
+];
+
+const COLS = SKULL[0].length;
+const ROWS = SKULL.length;
+const cells: { x: number; y: number }[] = [];
+SKULL.forEach((line, y) =>
+  [...line].forEach((c, x) => {
+    if (c === '#') cells.push({ x, y });
+  })
+);
+
+const w = Math.round((size * COLS) / ROWS);
+const h = size;
+---
+
+<svg
+  width={w}
+  height={h}
+  viewBox={`0 0 ${COLS} ${ROWS}`}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  shape-rendering="crispEdges"
+  aria-label="undeadOps logo mark"
+>
+  {cells.map(({ x, y }) => (
+    <rect x={x} y={y} width="1.02" height="1.02" fill={color} />
+  ))}
+</svg>
